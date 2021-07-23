@@ -4,8 +4,8 @@ use db_generation_game_online;
 
 create table tb_classe(
 id bigint auto_increment,
-classificacao varchar(255) not null,
-cor varchar(255) not null,
+classificacao varchar(255),
+cor varchar(255),
 primary key (id)
 );
 
@@ -27,14 +27,15 @@ primary key (id),
 foreign key (classe_id) references tb_classe (id)
 );
 
-insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Mulher Maravilha", 2000, 5000, 1);
+insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Mulher Maravilha", 2000, 5000, 1 );
 insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Capitão América", 15000, 7000, 1);
 insert into tb_personagem (nome, ataque, defesa, classe_id) values ("T'Chala", 8000, 10000, 1);
-insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Homem de Ferro", 3000, 1000, 1);
-insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Huck", 36000, 9000, 1);
-insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Barbie", 7000, 100, 1);
-insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Moana", 00, 5000, 1);
-insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Super Shock", 150000, 6000, 1);
+insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Homem de Ferro", 3000, 1000, 4);
+insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Huck", 36000, 9000, 5);
+insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Moana", 00, 500, 2);
+insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Barbie", 1000, 5000, 3);
+insert into tb_personagem (nome, ataque, defesa, classe_id) values ("Polly", 1000, 5000, 2);
+
 
 select * from tb_personagem where ataque > 2000;
 
@@ -44,6 +45,10 @@ select * from tb_personagem where nome like "%C%";
 
 select tb_personagem.nome, tb_personagem.ataque, tb_classe.classificacao as Classe
 from tb_personagem inner join tb_classe on tb_classe.id = tb_personagem.classe_id;
+
+select tb_classe.classificacao as Classe, tb_personagem.nome, tb_classe.cor as Cor from  tb_personagem inner join tb_classe on tb_classe.id = tb_personagem.classe_id where tb_personagem.classe_id = 3;
+
+
 
 
 
