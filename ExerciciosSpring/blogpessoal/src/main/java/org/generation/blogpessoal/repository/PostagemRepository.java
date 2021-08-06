@@ -11,5 +11,6 @@ public interface PostagemRepository extends JpaRepository<postagem, Long> {
 	
 	//findAll --> busca Containing --> Like mysql IgnoreCase --> Não considera maisculo ou minusculo
 	public List<postagem>findAllByTituloContainingIgnoreCase(String titulo); 
+	//select * from tb_postagens where titulo like  "%titulo%";
 
 }
